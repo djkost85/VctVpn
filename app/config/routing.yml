@@ -1,0 +1,4 @@
+vct_vpn:
+    resource: "@VctVpnBundle/Resources/config/routing.yml"
+    prefix:   /
+

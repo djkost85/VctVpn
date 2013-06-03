@@ -1,0 +1,61 @@
+cd /Library/WebServer/Documents/VctVpnGit0 
+
+curl -s http://getcomposer.org/installer | php
+php composer.phar create-project symfony/framework-standard-edition /Applications/MAMP/htdocs/sym_ws0/symfony 2.2.2
+
+/Users/murphy/.bash_profile 
+
+#/Applications/MAMP/bin/php/php5.3.6/bin
+
+
+http://localhost/VctVpnGit0/Symfony/web/
+
+
+http://localhost/VctVpnGit0/info.php
+http://localhost/VctVpnGit0/web/app_dev.php
+http://localhost/VctVpnGit0/web/app_dev.php/demo/hello/Fabien
+http://localhost/VctVpnGit0/web/config.php
+
+php app/console generate:bundle --namespace=Vct/VpnBundle --format=yml
+http://localhost/VctVpnGit0/web/app_dev.php/hello/Fabien
+
+php app/console doctrine:database:create
+
+
+php app/console doctrine:mapping:convert yaml ./src/Vct/VpnBundle/Resources/config/doctrine/metadata/orm --from-database --force
+php app/console doctrine:mapping:import VctVpnBundle annotation
+php app/console doctrine:generate:entities VctVpnBundle
+c
+http://localhost:8888/vct_vpn_ws/web/app_dev.php/hello/abc
+
+
+
+=========
+CREATE TABLE IF NOT EXISTS t_user (
+	  			id MEDIUMINT NOT NULL AUTO_INCREMENT,
+	  			vpn_server_id varchar(32),
+	  			email varchar(32),
+	  			password varchar(32),
+	  			register_date date,
+	  			paid_date date,
+	  			paid_fee int,
+	  			expire_date date,
+	  			expire_flag bool,
+	  			create_time date,
+	  			update_time date,
+	  			PRIMARY KEY (id)
+	  			)AUTO_INCREMENT=00001
+
+
+CREATE TABLE IF NOT EXISTS t_paypal (
+	  			id MEDIUMINT NOT NULL AUTO_INCREMENT,
+	  			user_email varchar(32),
+	  			paid_date date,
+	  			paid_fee double,
+	  			create_time date,
+	  			update_time date,
+	  			PRIMARY KEY (id)
+	  			)AUTO_INCREMENT=00001
+
+
+

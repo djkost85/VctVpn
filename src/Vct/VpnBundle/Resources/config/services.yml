@@ -1,0 +1,7 @@
+parameters:
+#    vct_vpn.example.class: Vct\VpnBundle\Example
+
+services:
+#    vct_vpn.example:
+#        class: %vct_vpn.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
