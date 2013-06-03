@@ -7,11 +7,11 @@ use Vct\VpnBundle\Entity\TUser;
 
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+class KanriController extends Controller
 {
     public function indexAction($name)
     {
-        return $this->render('VctVpnBundle:Default:index.html.twig', array('name' => $name));
+        return $this->render('VctVpnBundle:Kanri:index.html.twig', array('name' => $name));
     }
     
     public function newAction(Request $request)
@@ -22,14 +22,14 @@ class DefaultController extends Controller
     	$user->setEmail('email');
 
     	$form = $this->createFormBuilder($user)->add('email','text')->getForm();
-    	return $this->render('VctVpnBundle:Default:new.html.twig',array('form'=>$form->createView()));
+    	return $this->render('VctVpnBundle:Kanri:new.html.twig',array('form'=>$form->createView()));
     }
     
     public function infoAction(Request $request)
     {
 //     	return $this->render('VctVpnBundle:Default:index.html.twig', array('name' => 'test_new'));
     	
-    	return $this->render('VctVpnBundle:Default:info.html.twig');
+    	return $this->render('VctVpnBundle:Kanri:info.html.twig');
     }
     
 }
