@@ -1,4 +1,9 @@
-<form action="{{ path('vct_vpn_homepage_new') }}" method="post" {{ form_enctype(form) }}>
+{% extends 'VctVpnBundle::layout.html.twig' %}
+
+{% block body %}
+    <form action="{{ path('vct_vpn_kanri_new') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <input type="submit" />
-</form>
+	</form>
+{% endblock %}
+

@@ -1,4 +1,8 @@
 vct_vpn:
     resource: "@VctVpnBundle/Resources/config/routing.yml"
     prefix:   /
+    
+vct_vpn_kanri:
+    resource: "@VctVpnBundle/Resources/config/routing_kanri.yml"
+    prefix:   /kanri
 
