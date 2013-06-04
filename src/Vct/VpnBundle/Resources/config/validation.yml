@@ -1,0 +1,4 @@
+Vct\VpnBundle\Entity\TUser:
+  properties:
+    email:
+      - NotBlank: ~

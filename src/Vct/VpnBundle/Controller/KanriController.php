@@ -2,6 +2,8 @@
 
 namespace Vct\VpnBundle\Controller;
 
+use Vct\VpnBundle\Form\Type\TUserType;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Vct\VpnBundle\Entity\TUser;
 
@@ -19,9 +21,19 @@ class KanriController extends Controller
 //     	return $this->render('VctVpnBundle:Default:index.html.twig', array('name' => 'test_new'));
     	
     	$user = new TUser();
-    	$user->setEmail('email');
+//     	$user->setEmail('email');
 
-    	$form = $this->createFormBuilder($user)->add('email','text')->getForm();
+//     	$form = $this->createFormBuilder($user)->add('vpnServerId','text')->add('email','text')->add('registerDate','date')->getForm();
+    	$form = $this->createForm(new TUserType(),$user);
+    	
+    	if($request->isMethod('POST')) {
+    		$form->bind($request);
+    		
+    		if($form->isValid()) {
+    			echo 'validate';
+    		}	
+    	}
+    	
     	return $this->render('VctVpnBundle:Kanri:new.html.twig',array('form'=>$form->createView()));
     }
     
