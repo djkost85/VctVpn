@@ -1,47 +1,106 @@
 <?php
 
 namespace Vct\VpnBundle\Controller;
-
 use Vct\VpnBundle\Form\Type\TUserType;
+use Vct\VpnBundle\Form\Type\TUserUpdateType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Vct\VpnBundle\Entity\TUser;
-
 use Symfony\Component\HttpFoundation\Request;
 
-class KanriController extends Controller
-{
-    public function indexAction($name)
-    {
-        return $this->render('VctVpnBundle:Kanri:index.html.twig', array('name' => $name));
-    }
-    
-    public function newAction(Request $request)
-    {
-//     	return $this->render('VctVpnBundle:Default:index.html.twig', array('name' => 'test_new'));
-    	
-    	$user = new TUser();
-//     	$user->setEmail('email');
+use Vct\VpnBundle\Entity\TUser;
+use Vct\VpnBundle\Repository\TUserRepository;
 
-//     	$form = $this->createFormBuilder($user)->add('vpnServerId','text')->add('email','text')->add('registerDate','date')->getForm();
-    	$form = $this->createForm(new TUserType(),$user);
-    	
-    	if($request->isMethod('POST')) {
-    		$form->bind($request);
-    		
-    		if($form->isValid()) {
-    			echo 'validate';
-    		}	
-    	}
-    	
-    	return $this->render('VctVpnBundle:Kanri:new.html.twig',array('form'=>$form->createView()));
-    }
-    
-    public function infoAction(Request $request)
-    {
-//     	return $this->render('VctVpnBundle:Default:index.html.twig', array('name' => 'test_new'));
-    	
-    	return $this->render('VctVpnBundle:Kanri:info.html.twig');
-    }
-    
+class KanriController extends Controller {
+	public function indexAction($name) {
+		return $this
+				->render('VctVpnBundle:Kanri:index.html.twig',
+						array('name' => $name));
+	}
+
+	public function infoAction(Request $request) {
+		$em = $this->getDoctrine()->getEntityManager();
+		$repo = $em->getRepository('VctVpnBundle:TUser');
+
+		$users = $repo->getTUserWithCount('1');
+// 		var_dump($users);
+
+		$arr['users'] = $users;
+		
+		return $this->render('VctVpnBundle:Kanri:info.html.twig',$arr);
+	}
+
+	public function newAction(Request $request) {
+		$user = new TUser();
+		$form = $this->createForm(new TUserType(), $user);
+
+		if ($request->isMethod('POST')) {
+			$form->bind($request);
+
+			if ($form->isValid()) {
+				echo 'validate <br/>';
+				$em = $this->getDoctrine()->getManager();
+				$em->persist($user);
+				$em->flush();
+			} else {
+				echo 'not validate <br/>';
+
+				//     			$validator = $this->get('validator');
+				//     			$errors = $validator->validate($user, array('registration'));
+				//     			var_dump($errors);
+			}
+		}
+
+		return $this
+				->render('VctVpnBundle:Kanri:new.html.twig',
+						array('form' => $form->createView()));
+	}
+	
+	public function updateAction($user_id) {
+		
+// 		$user = new TUser();
+		$em = $this->getDoctrine()->getEntityManager();
+		$repo = $em->getRepository('VctVpnBundle:TUser');
+		$user = $repo->findOneBy(array('id'=>$user_id));
+		
+		var_dump($user);
+		
+		$form = $this->createForm(new TUserUpdateType(), $user);
+		$request = $this->getRequest();
+		
+		if ($request->isMethod('POST')) {
+			$form->bind($request);
+		
+			if ($form->isValid()) {
+				echo 'validate <br/>';
+				$em = $this->getDoctrine()->getManager();
+				$em->persist($user);
+				$em->flush();
+				
+				return $this->redirect($this->generateUrl('vct_vpn_kanri_confirm',array('user_id'=>$user_id)));
+			} else {
+				echo 'not validate <br/>';
+		
+				//     			$validator = $this->get('validator');
+				//     			$errors = $validator->validate($user, array('registration'));
+				//     			var_dump($errors);
+			}
+		}
+		
+		return $this
+		->render('VctVpnBundle:Kanri:update.html.twig',
+				array('form' => $form->createView(),'user_id'=>$user->getId()));
+		
+	}
+	
+	public function confirmAction($user_id) {
+		
+		$em = $this->getDoctrine()->getEntityManager();
+		$repo = $em->getRepository('VctVpnBundle:TUser');
+		$user = $repo->findOneBy(array('id'=>$user_id));
+		
+		$arr['user'] = $user;
+		
+		return $this->render('VctVpnBundle:Kanri:confirm.html.twig',$arr);
+	}
+
 }

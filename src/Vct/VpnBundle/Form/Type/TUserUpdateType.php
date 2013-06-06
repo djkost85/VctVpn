@@ -6,12 +6,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class TUserType extends AbstractType {
+class TUserUpdateType extends AbstractType {
 	public function buildForm(FormBuilderInterface $builder, array $options) {
 		// TODO: Auto-generated method stub
 		$builder->add('vpnServerId', 'text');
 		$builder->add('email', 'email');
-		$builder->add('password', 'password');
+// 		$builder->add('password', 'password');
 // 		$builder->add('registerDate', 'date');
 // 		$builder->add('paidDate', 'date');
 		$builder->add('paidFee', 'integer');
@@ -23,7 +23,7 @@ class TUserType extends AbstractType {
 
 	public function getName() {
 		// TODO: Auto-generated method stub
-		return 'TUserType';
+		return 'TUserUpdateType';
 	}
 
 	public function setDefaultOptions(OptionsResolverInterface $resolver) {

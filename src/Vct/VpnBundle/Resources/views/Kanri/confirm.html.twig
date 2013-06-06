@@ -11,23 +11,18 @@
 	</tr>
 
 
-    {% for user in users %}
-						
                             <tr>
-                            	<td width="120"><a href="{{ path('vct_vpn_kanri_update', {'user_id':user.id}) }}">{{ user.id }}</a></td>
+                            	<td width="120">{{ user.id }}</td>
                                 <td width="120">{{ user.vpnServerId }}</a></td>
 {#                                 <a href="{{ path('relocate_search_detail', {'id':entity.estateId}) }}">{{ entity.estateName }}</a>#}
                                 <td width="120">{{ user.email }}</td>
                                 <td width="120">{{ user.paidFee }}</td>
                             </tr>
                         
-
-
-      {% endfor %}
       </table>
-
-      <a href="{{ path('vct_vpn_kanri_new') }}">New User</a>
-{#       <input type="button" value="New User" onClick="javascript:window.location='{{ 'new' }}'" id="btn_modify"/>#}
+      
+            <a href="{{ path('vct_vpn_kanri_info') }}">Show List</a>
+{#       <input type="button" value="Show List" onClick="javascript:window.location='{{ 'info' }}'" id="btn_modify"/>#}
 {#                     url('search_detail_modify', {id:entity.estateId})#}
 
 {% endblock %}

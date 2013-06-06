@@ -1,4 +1,10 @@
 Vct\VpnBundle\Entity\TUser:
   properties:
     email:
-      - NotBlank: ~
+      - Email: { message: email, groups: [registration]  }
+      
+      
+Vct\VpnBundle\Entity\TPaypal:
+  properties:
+    userEmail:
+      - Email: { message: email, groups: [registration]  }

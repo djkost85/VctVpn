@@ -1,11 +1,10 @@
 {% extends 'VctVpnBundle::layout.html.twig' %}
 
 {% block body %}
-    <form action="{{ path('vct_vpn_kanri_new') }}" method="post" {{ form_enctype(form) }}>
+    <form action="{{ path('vct_vpn_kanri_update',{'user_id':user_id}) }}" method="post" {{ form_enctype(form) }}>
     {{ form_errors(form) }}
     {{ form_widget(form) }}
     {{ form_rest(form) }}
     <input type="submit" />
 	</form>
 {% endblock %}
-
