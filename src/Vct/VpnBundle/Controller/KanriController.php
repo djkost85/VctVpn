@@ -68,13 +68,6 @@ class KanriController extends Controller {
 			$repo->deleteTUserInArray($ids);
 		}
 		
-// 		return $this
-// 		->render('VctVpnBundle:Kanri:index.html.twig',
-// 				array('name' => 'deleteAction'));
-
-		
-		// 		var_dump($users);
-		
 		$arr['users'] = $users;
 		$arr['user_ids'] = 'ab';
 		

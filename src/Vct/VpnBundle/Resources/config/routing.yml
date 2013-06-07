@@ -2,5 +2,9 @@ vct_vpn_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: VctVpnBundle:Default:index }
     
+vct_vpn_tGet:
+    pattern:  /tGet
+    defaults: { _controller: VctVpnBundle:Default:tGet }
+    
     
 
