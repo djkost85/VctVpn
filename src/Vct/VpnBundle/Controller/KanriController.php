@@ -21,10 +21,10 @@ class KanriController extends Controller {
 		$em = $this->getDoctrine()->getEntityManager();
 		$repo = $em->getRepository('VctVpnBundle:TUser');
 
-		$users = $repo->getTUserWithCount('1');
-// 		var_dump($users);
+		$users = $repo->getTUserWithCount('99');
 
 		$arr['users'] = $users;
+		$arr['user_ids'] = 'ab';
 		
 		return $this->render('VctVpnBundle:Kanri:info.html.twig',$arr);
 	}
@@ -53,6 +53,31 @@ class KanriController extends Controller {
 		return $this
 				->render('VctVpnBundle:Kanri:new.html.twig',
 						array('form' => $form->createView()));
+	}
+	
+	public function deleteAction(Request $request) {
+		
+		$ids = $request->request->get('ids');
+		var_dump($ids);
+		
+		
+		
+// 		return $this
+// 		->render('VctVpnBundle:Kanri:index.html.twig',
+// 				array('name' => 'deleteAction'));
+
+		$em = $this->getDoctrine()->getEntityManager();
+		$repo = $em->getRepository('VctVpnBundle:TUser');
+		
+		$users = $repo->getTUserInArray($ids);
+		// 		var_dump($users);
+		
+		$arr['users'] = $users;
+		$arr['user_ids'] = 'ab';
+		
+		return $this->render('VctVpnBundle:Kanri:delete.html.twig',$arr);
+		
+		
 	}
 	
 	public function updateAction($user_id) {

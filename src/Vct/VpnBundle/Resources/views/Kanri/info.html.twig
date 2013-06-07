@@ -1,6 +1,10 @@
 {% extends 'VctVpnBundle::layout.html.twig' %}
 
 {% block body %}
+	
+	<form action="{{ path('vct_vpn_kanri_delete') }}" method="post" >
+
+
 	<table border="0" cellspacing="0" cellpadding="0" class="new_lic">
 
 	<tr >
@@ -14,6 +18,8 @@
     {% for user in users %}
 						
                             <tr>
+                            	<td class="list_td1">
+								<input type="checkbox" name="ids[]" value="{{ user.id }}"/></td>
                             	<td width="120"><a href="{{ path('vct_vpn_kanri_update', {'user_id':user.id}) }}">{{ user.id }}</a></td>
                                 <td width="120">{{ user.vpnServerId }}</a></td>
 {#                                 <a href="{{ path('relocate_search_detail', {'id':entity.estateId}) }}">{{ entity.estateName }}</a>#}
@@ -24,10 +30,22 @@
 
 
       {% endfor %}
+      
       </table>
+      	<input type="submit" value="Delete Users" />
+{#       <input type="button" value="Delete Users" onClick="document.forms[0].action='{{ path('vct_vpn_kanri_new') }}';document.forms[0].submit();"/>#}
+      </form>
 
-      <a href="{{ path('vct_vpn_kanri_new') }}">New User</a>
-{#       <input type="button" value="New User" onClick="javascript:window.location='{{ 'new' }}'" id="btn_modify"/>#}
-{#                     url('search_detail_modify', {id:entity.estateId})#}
+      <input type="button" value="New User" onClick="javascript:window.location='{{ url('vct_vpn_kanri_new') }}'"/>    
+{#       <input type="button" value="Delete Users" onClick="javascript:window.location='{{ url('vct_vpn_kanri_delete') }}'" />#}
+
+
+{# 		<input type="button" value="Delete Users" onClick="document.forms[0].action='{{ path('vct_vpn_kanri_delete') }}';document.forms[0].submit();"/>#}
+		
+{# 		onclick="document.forms[0].action='{{ path('search_detail_modify',{'id':id,'workflow':'back'}) }}';document.forms[0].submit();"#}
+		
+      
+      {# <a href="{{ path('vct_vpn_kanri_delete') }}">Delete Users</a> #}
+
 
 {% endblock %}

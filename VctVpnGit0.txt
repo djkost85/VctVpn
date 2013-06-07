@@ -1,0 +1,100 @@
+cd /Library/WebServer/Documents/VctVpnGit0 
+
+curl -s http://getcomposer.org/installer | php
+php composer.phar create-project symfony/framework-standard-edition /Applications/MAMP/htdocs/sym_ws0/symfony 2.2.2
+
+/Users/murphy/.bash_profile 
+
+#/Applications/MAMP/bin/php/php5.3.6/bin
+
+
+http://localhost/VctVpnGit0/Symfony/web/
+
+
+http://localhost/VctVpnGit0/info.php
+http://localhost/VctVpnGit0/web/app_dev.php
+http://localhost/VctVpnGit0/web/app_dev.php/demo/hello/Fabien
+http://localhost/VctVpnGit0/web/app_dev.php/hello/Fabien
+http://localhost/VctVpnGit0/web/app_dev.php/kanri/info
+http://localhost/VctVpnGit0/web/config.php
+
+
+
+
+
+php app/console generate:bundle --namespace=Vct/VpnBundle --format=yml
+http://localhost/VctVpnGit0/web/app_dev.php/hello/Fabien
+
+
+php app/console doctrine:database:create
+=========
+CREATE TABLE IF NOT EXISTS t_user (
+	  			id MEDIUMINT NOT NULL AUTO_INCREMENT,
+	  			vpn_server_id varchar(32),
+	  			email varchar(32),
+	  			password varchar(32),
+	  			register_date date,
+	  			paid_date date,
+	  			paid_fee int,
+	  			expire_date date,
+	  			expire_flag bool,
+	  			create_time date,
+	  			update_time date,
+	  			PRIMARY KEY (id)
+	  			)AUTO_INCREMENT=00001
+
+
+CREATE TABLE IF NOT EXISTS t_paypal (
+	  			id MEDIUMINT NOT NULL AUTO_INCREMENT,
+	  			user_email varchar(32),
+	  			paid_date date,
+	  			paid_fee double,
+	  			create_time date,
+	  			update_time date,
+	  			PRIMARY KEY (id)
+	  			)AUTO_INCREMENT=00001
+=============
+
+
+php app/console doctrine:mapping:convert xml ./src/Vct/VpnBundle/Resources/config/doctrine/metadata/orm --from-database --force
+php app/console doctrine:mapping:import VctVpnBundle annotation
+php app/console doctrine:generate:entities VctVpnBundle
+
+http://localhost/Whenever/web/app_dev.php/k/relocate/realEstates/index
+http://localhost/Whenever/web/app_dev.php/relocate/search/index
+
+
+
+exec("php /Library/WebServer/Documents/VctVpnGit0/app/console cache:clear --env=prod");
+exec("php /Library/WebServer/Documents/Whenever/app/console cache:clear --env=prod");
+
+
+
+
+
+http://localhost:8888/vct_vpn_ws/web/app_dev.php/hello/abc
+
+
+
+
+
+security:
+    firewalls:
+        secured_area:
+            pattern:    ^/
+            anonymous: ~
+            http_basic:
+                realm: "Secured Demo Area"
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+    providers:
+        in_memory:
+            memory:
+                users:
+                    admin: { password: 123qwe, roles: 'ROLE_ADMIN' }
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+
+
+
+

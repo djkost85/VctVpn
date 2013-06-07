@@ -4,7 +4,11 @@ vct_vpn_kanri:
     
 vct_vpn_kanri_new:
     pattern:  /new
-    defaults: { _controller: VctVpnBundle:Kanri:new}
+    defaults: { _controller: VctVpnBundle:Kanri:new }
+    
+vct_vpn_kanri_delete:
+    pattern:  /delete
+    defaults: { _controller: VctVpnBundle:Kanri:delete }
     
 vct_vpn_kanri_update:
     pattern:  /update/{user_id}
