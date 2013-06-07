@@ -60,16 +60,19 @@ class KanriController extends Controller {
 		$ids = $request->request->get('ids');
 		var_dump($ids);
 		
+		$em = $this->getDoctrine()->getEntityManager();
+		$repo = $em->getRepository('VctVpnBundle:TUser');
+		$users = $repo->getTUserInArray($ids);
 		
+		if ($request->isMethod('POST')) {
+			$repo->deleteTUserInArray($ids);
+		}
 		
 // 		return $this
 // 		->render('VctVpnBundle:Kanri:index.html.twig',
 // 				array('name' => 'deleteAction'));
 
-		$em = $this->getDoctrine()->getEntityManager();
-		$repo = $em->getRepository('VctVpnBundle:TUser');
 		
-		$users = $repo->getTUserInArray($ids);
 		// 		var_dump($users);
 		
 		$arr['users'] = $users;

@@ -10,8 +10,7 @@ class TUserRepository extends EntityRepository {
 				// 				->createQuery('SELECT * FROM VctVpnBundle:TUser limit :count')
 				// 				->setParameters(array('count' => $count))->getResult();
 				->createQuery('SELECT t FROM VctVpnBundle:TUser t')
-				->setMaxResults($count)
-				->getResult();
+				->setMaxResults($count)->getResult();
 
 		// 		$em = $this->getDoctrine()->getManager();
 		// 		$query = $em->createQuery(
@@ -34,4 +33,13 @@ class TUserRepository extends EntityRepository {
 		// 		)->setParameter('price', '19.99');
 
 	}
+
+	public function deleteTUserInArray($zArray) {
+
+		return $this->getEntityManager()
+				->createQuery(
+						'DELETE VctVpnBundle:TUser t where t.id IN (:zArray)')
+				->setParameter('zArray', $zArray)->getResult();
+	}
+
 }
