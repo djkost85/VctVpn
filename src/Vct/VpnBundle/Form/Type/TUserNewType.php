@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class TUserType extends AbstractType {
+class TUserNewType extends AbstractType {
 	public function buildForm(FormBuilderInterface $builder, array $options) {
 		// TODO: Auto-generated method stub
 		$builder->add('vpnServerId', 'text');
@@ -23,7 +23,7 @@ class TUserType extends AbstractType {
 
 	public function getName() {
 		// TODO: Auto-generated method stub
-		return 'TUserType';
+		return 'TUserNewType';
 	}
 
 	public function setDefaultOptions(OptionsResolverInterface $resolver) {

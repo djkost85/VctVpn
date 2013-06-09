@@ -32,13 +32,8 @@ class DefaultController extends Controller
     	return $this->render('VctVpnBundle:Default:info.html.twig');
     }
     
-    public function tGetAction() {
-//     	$ids = $request->request->get('ids');
-// 		$foo = $this->getRequest()->request->get('name');
-
-// 		$param_post = $this->getRequest()->request->all();
-		$param_get = $this->getRequest()->query->all();
-		var_dump($param_get);
-    }
+    
+    
+    
     
 }

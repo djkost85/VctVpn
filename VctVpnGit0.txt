@@ -1,4 +1,6 @@
 cd /Library/WebServer/Documents/VctVpnGit0 
+php /Library/WebServer/Documents/VctVpnGit0/app/console cache:clear
+php /Library/WebServer/Documents/VctVpnGit0/app/console cache:clear --env=prod
 
 curl -s http://getcomposer.org/installer | php
 php composer.phar create-project symfony/framework-standard-edition /Applications/MAMP/htdocs/sym_ws0/symfony 2.2.2
@@ -13,12 +15,24 @@ http://localhost/VctVpnGit0/Symfony/web/
 
 http://localhost/VctVpnGit0/info.php
 http://localhost/VctVpnGit0/web/app_dev.php
+
 http://localhost/VctVpnGit0/web/app_dev.php/demo/hello/Fabien
+
 http://localhost/VctVpnGit0/web/app_dev.php/hello/Fabien
+http://localhost/VctVpnGit0/web/app_dev.php/demo/tGet
+
+
+
+http://localhost/VctVpnGit0/web/app_dev.php/vctvpn/tGet?foo=foo&bar=bar
+http://localhost/VctVpnGit0/web/app_dev.php/vctvpn/rtnJson?foo=foo&bar=bar
+
+
+
 http://localhost/VctVpnGit0/web/app_dev.php/kanri/info
 http://localhost/VctVpnGit0/web/config.php
 
-
+http://localhost/Whenever/web/app_dev.php/k/relocate/realEstates/index
+http://localhost/Whenever/web/app_dev.php/relocate/search/index
 
 
 
@@ -60,8 +74,7 @@ php app/console doctrine:mapping:convert xml ./src/Vct/VpnBundle/Resources/confi
 php app/console doctrine:mapping:import VctVpnBundle annotation
 php app/console doctrine:generate:entities VctVpnBundle
 
-http://localhost/Whenever/web/app_dev.php/k/relocate/realEstates/index
-http://localhost/Whenever/web/app_dev.php/relocate/search/index
+
 
 
 
