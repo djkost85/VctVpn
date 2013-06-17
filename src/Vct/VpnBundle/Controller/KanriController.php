@@ -41,6 +41,10 @@ class KanriController extends Controller {
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($user);
 				$em->flush();
+
+                $user_id = $user->getId();
+
+                return $this->redirect($this->generateUrl('vct_vpn_kanri_confirm',array('user_id'=>$user_id)));
 			} else {
 				echo 'not validate <br/>';
 

@@ -1,4 +1,4 @@
-cd /Library/WebServer/Documents/VctVpnGit0 
+cd /Library/WebServer/Documents/VctVpn_Lamp 
 
 curl -s http://getcomposer.org/installer | php
 php composer.phar create-project symfony/framework-standard-edition /Applications/MAMP/htdocs/sym_ws0/symfony 2.2.2
@@ -8,15 +8,17 @@ php composer.phar create-project symfony/framework-standard-edition /Application
 #/Applications/MAMP/bin/php/php5.3.6/bin
 
 
-http://localhost/VctVpnGit0/Symfony/web/
+http://localhost/VctVpn_Lamp/Symfony/web/
 
 
-http://localhost/VctVpnGit0/info.php
-http://localhost/VctVpnGit0/web/app_dev.php
-http://localhost/VctVpnGit0/web/app_dev.php/demo/hello/Fabien
-http://localhost/VctVpnGit0/web/app_dev.php/hello/Fabien
-http://localhost/VctVpnGit0/web/app_dev.php/kanri/info
-http://localhost/VctVpnGit0/web/config.php
+http://localhost/VctVpn_Lamp/info.php
+
+http://localhost/VctVpn_Lamp/web/config.php
+http://localhost/VctVpn_Lamp/web/app_dev.php
+http://localhost/VctVpn_Lamp/web/app_dev.php/demo/hello/Fabien
+http://localhost/VctVpn_Lamp/web/app_dev.php/hello/Fabien
+http://localhost/VctVpn_Lamp/web/app_dev.php/kanri/info
+
 
 
 http://localhost/Whenever/web/app_dev.php/relocate/
@@ -25,7 +27,7 @@ http://localhost/Whenever/web/app_dev.php/relocate/
 
 
 php app/console generate:bundle --namespace=Vct/VpnBundle --format=yml
-http://localhost/VctVpnGit0/web/app_dev.php/hello/Fabien
+http://localhost/VctVpn_Lamp/web/app_dev.php/hello/Fabien
 
 
 php app/console doctrine:database:create
@@ -67,7 +69,7 @@ http://localhost/Whenever/web/app_dev.php/relocate/search/index
 
 
 
-exec("php /Library/WebServer/Documents/VctVpnGit0/app/console cache:clear --env=prod");
+exec("php /Library/WebServer/Documents/VctVpn_Lamp/app/console cache:clear --env=prod");
 
 
 
