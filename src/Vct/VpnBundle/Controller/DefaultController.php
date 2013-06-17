@@ -32,4 +32,8 @@ class DefaultController extends Controller
     	return $this->render('VctVpnBundle:Default:info.html.twig');
     }
     
+    
+    
+    
+    
 }

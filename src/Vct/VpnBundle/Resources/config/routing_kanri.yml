@@ -12,7 +12,11 @@ vct_vpn_kanri_about:
 
 vct_vpn_kanri_new:
     pattern:  /new
-    defaults: { _controller: VctVpnBundle:Kanri:new}
+    defaults: { _controller: VctVpnBundle:Kanri:new }
+    
+vct_vpn_kanri_delete:
+    pattern:  /delete
+    defaults: { _controller: VctVpnBundle:Kanri:delete }
     
 vct_vpn_kanri_update:
     pattern:  /update/{user_id}
@@ -21,5 +25,16 @@ vct_vpn_kanri_update:
 vct_vpn_kanri_confirm:
     pattern:  /confirm/{user_id}
     defaults: { _controller: VctVpnBundle:Kanri:confirm }
+
+vct_vpn_kanri_info:
+    pattern:  /info
+    defaults: { _controller: VctVpnBundle:Kanri:info }
+
+vct_vpn_kanri_rtnJson:
+    pattern:  /rtnJson
+    defaults: { _controller: VctVpnBundle:Kanri:rtnJson }    
     
+vct_vpn_kanri_rtnTUser:
+    pattern:  /showUser
+    defaults: { _controller: VctVpnBundle:Kanri:showUser }
 

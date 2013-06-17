@@ -1,11 +1,12 @@
 <?php
 
 namespace Vct\VpnBundle\Controller;
-use Vct\VpnBundle\Form\Type\TUserType;
+use Vct\VpnBundle\Form\Type\TUserNewType;
 use Vct\VpnBundle\Form\Type\TUserUpdateType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 use Vct\VpnBundle\Entity\TUser;
 use Vct\VpnBundle\Repository\TUserRepository;
@@ -21,10 +22,10 @@ class KanriController extends Controller {
 		$em = $this->getDoctrine()->getEntityManager();
 		$repo = $em->getRepository('VctVpnBundle:TUser');
 
-		$users = $repo->getTUserWithCount('1');
-// 		var_dump($users);
+		$users = $repo->getTUserWithCount('99');
 
 		$arr['users'] = $users;
+		$arr['user_ids'] = 'ab';
 		
 		return $this->render('VctVpnBundle:Kanri:info.html.twig',$arr);
 	}
@@ -35,7 +36,7 @@ class KanriController extends Controller {
 
 	public function newAction(Request $request) {
 		$user = new TUser();
-		$form = $this->createForm(new TUserType(), $user);
+		$form = $this->createForm(new TUserNewType(), $user);
 
 		if ($request->isMethod('POST')) {
 			$form->bind($request);
@@ -46,9 +47,8 @@ class KanriController extends Controller {
 				$em->persist($user);
 				$em->flush();
 
-                $user_id = $user->getId();
-
-                return $this->redirect($this->generateUrl('vct_vpn_kanri_confirm',array('user_id'=>$user_id)));
+				$user_id = $user->getId();
+				return $this->redirect($this->generateUrl('vct_vpn_kanri_confirm',array('user_id'=>$user_id)));
 			} else {
 				echo 'not validate <br/>';
 
@@ -63,9 +63,29 @@ class KanriController extends Controller {
 						array('form' => $form->createView()));
 	}
 	
+	public function deleteAction(Request $request) {
+		
+		$ids = $request->request->get('ids');
+		var_dump($ids);
+		
+		$em = $this->getDoctrine()->getEntityManager();
+		$repo = $em->getRepository('VctVpnBundle:TUser');
+		$users = $repo->getTUserInArray($ids);
+		
+		if ($request->isMethod('POST')) {
+			$repo->deleteTUserInArray($ids);
+		}
+		
+		$arr['users'] = $users;
+		$arr['user_ids'] = 'ab';
+		
+		return $this->render('VctVpnBundle:Kanri:delete.html.twig',$arr);
+		
+		
+	}
+	
 	public function updateAction($user_id) {
 		
-// 		$user = new TUser();
 		$em = $this->getDoctrine()->getEntityManager();
 		$repo = $em->getRepository('VctVpnBundle:TUser');
 		$user = $repo->findOneBy(array('id'=>$user_id));
@@ -110,5 +130,39 @@ class KanriController extends Controller {
 		
 		return $this->render('VctVpnBundle:Kanri:confirm.html.twig',$arr);
 	}
+	
+	public function refreshUserState(TUser $tUser) {
+		
+		
+	}
+	
+	public function rtnJsonAction(Request $request) {
+		$param_get = $request->query->all();
+	
+		$response = new Response(json_encode(array($param_get)));
+		$response->headers->set('Content-Type', 'application/json');
+		return $response;
+	}
+	
+	public function showUserAction(Request $request) {
+	
+		$param_get = $request->query->all();
+		$user_id = $param_get['id'];
+	
+		// 		var_dump($user_id);
+	
+		$em = $this->getDoctrine()->getEntityManager();
+		$repo = $em->getRepository('VctVpnBundle:TUser');
+		$user = $repo->findOneBy(array('id' => $user_id));
+	
+	
+		$arr['user'] = $user;
+		var_dump($user);
+		// 		$arr['user_ids'] = 'ab';
+	
+		return $this->render('VctVpnBundle:Vctvpn:info.html.twig',$arr);
+	}
+	
+	
 
 }
