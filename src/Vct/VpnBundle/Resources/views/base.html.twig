@@ -5,16 +5,16 @@
 			<meta http-equiv="Content-Type" content="text/html" ;
 				charset=utf-8 " />
 			<title>
-				{% block title %}symblog{% endblock %} - symblog
+				{% block title %}Symfony Workspace{% endblock %} - Home
 			</title>
 			<!--[if lt IE 9]>            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>        <![endif]-->
 			{% block stylesheets %}
 			<link
 				href='http://fonts.googleapis.com/css?family=Irish+Grover'
-				rel='stylesheet' type='text/css'>
+				rel='stylesheet' type='text/css' />
 			<link
 				href='http://fonts.googleapis.com/css?family=La+Belle+Aurore'
-				rel='stylesheet' type='text/css'>
+				rel='stylesheet' type='text/css' />
 			<link href="{{ asset('css/screen.css') }}" type="text/css"
 				rel="stylesheet" />
 			{% endblock %}
@@ -34,7 +34,7 @@
 									<a href="{{ path('vct_vpn_kanri_about') }}">About</a>
 								</li>
 								<li>
-									<a href="{{ path('vct_vpn_kanri_info') }}">Contact</a>
+									<a href="{{ path('vct_vpn_kanri_contact') }}">Contact</a>
 								</li>
 							</ul>
 						</nav>
@@ -43,12 +43,12 @@
 					<hgroup>
 						<h2>
 							{% block blog_title %}
-							<a href="#">symblog</a>
+							<a href="#">symfony ws</a>
 							{% endblock %}
 						</h2>
 						<h3>
 							{% block blog_tagline %}
-							<a href="#">creating a blog in Symfony2</a>
+							<a href="#">working with Symfony2</a>
 							{% endblock %}
 						</h3>
 					</hgroup>
@@ -60,7 +60,7 @@
 					{% block sidebar %}{% endblock %}
 				</aside>
 				<div id="footer">
-					{% block footer %} Symfony2 work space - created
+					{% block footer %} Symfony2 workspace - created
 					by
 					<a href="https://github.com/murphy-yu">murphy-yu</a>
 					{% endblock %}

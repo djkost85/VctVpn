@@ -1,7 +1,7 @@
 {% extends 'VctVpnBundle::layout.html.twig' %}
 
 {% block body %}
-    <form action="{{ path('vct_vpn_kanri_new') }}" method="post" {{ form_enctype(form) }}>
+    <form action="{{ path('vct_vpn_kanri_new') }}" method="post" {{ form_enctype(form) }} class="blogger">
     {{ form_errors(form) }}
     {{ form_widget(form) }}
     {{ form_rest(form) }}

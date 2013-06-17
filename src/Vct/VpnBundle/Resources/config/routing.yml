@@ -1,11 +1,18 @@
 vct_vpn_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: VctVpnBundle:Vctvpn:index }
+    requirements:
+      _method:  GET
 
 vct_vpn_rtnJson:
     pattern:  /echoJson
     defaults: { _controller: VctVpnBundle:Vctvpn:echoJson }
+    requirements:
+          _method:  GET
     
 vct_vpn_rtnTUser:
     pattern:  /showUser
     defaults: { _controller: VctVpnBundle:Vctvpn:showUser }
+    requirements:
+          _method:  GET
+

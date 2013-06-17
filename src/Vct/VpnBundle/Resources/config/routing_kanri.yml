@@ -26,11 +26,6 @@ vct_vpn_kanri_confirm:
     pattern:  /confirm/{user_id}
     defaults: { _controller: VctVpnBundle:Kanri:confirm }
 
-#vct_vpn_kanri_rtnJson:
-#    pattern:  /rtnJson
-#    defaults: { _controller: VctVpnBundle:Kanri:rtnJson }
-    
-#vct_vpn_kanri_rtnTUser:
-#    pattern:  /showUser
-#    defaults: { _controller: VctVpnBundle:Kanri:showUser }
-
+vct_vpn_kanri_contact:
+    pattern:  /contact
+    defaults: { _controller: VctVpnBundle:Kanri:contact }
