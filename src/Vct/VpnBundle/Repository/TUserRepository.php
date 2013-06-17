@@ -18,4 +18,6 @@ class TUserRepository extends EntityRepository {
 		// 		)->setParameter('price', '19.99');
 
 	}
+
+    
 }

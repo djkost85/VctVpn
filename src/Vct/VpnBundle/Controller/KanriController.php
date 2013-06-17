@@ -29,6 +29,10 @@ class KanriController extends Controller {
 		return $this->render('VctVpnBundle:Kanri:info.html.twig',$arr);
 	}
 
+    public function aboutAction(Request $request) {
+        return $this->render('vctVpnBundle:Kanri:about.html.twig');
+    }
+
 	public function newAction(Request $request) {
 		$user = new TUser();
 		$form = $this->createForm(new TUserType(), $user);

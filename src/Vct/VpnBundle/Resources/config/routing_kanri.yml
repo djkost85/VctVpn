@@ -1,7 +1,15 @@
 vct_vpn_kanri:
     pattern:  /hello/{name}
     defaults: { _controller: VctVpnBundle:Kanri:index }
-    
+
+vct_vpn_kanri_info:
+    pattern:  /info
+    defaults: { _controller: VctVpnBundle:Kanri:info }
+
+vct_vpn_kanri_about:
+    pattern:  /about
+    dafaults: { _controller: VctVpnBundle:Kanri:about }
+
 vct_vpn_kanri_new:
     pattern:  /new
     defaults: { _controller: VctVpnBundle:Kanri:new}
@@ -14,6 +22,4 @@ vct_vpn_kanri_confirm:
     pattern:  /confirm/{user_id}
     defaults: { _controller: VctVpnBundle:Kanri:confirm }
     
-vct_vpn_kanri_info:
-    pattern:  /info
-    defaults: { _controller: VctVpnBundle:Kanri:info }
+
